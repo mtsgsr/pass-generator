@@ -23,6 +23,7 @@ import { FaRegCopy } from "react-icons/fa";
 import { BsArrowRightShort } from "react-icons/bs";
 
 function App() {
+  const lang = navigator.language || navigator.userLanguage;
   const [result, setResult] = React.useState("");
   const [value, setValue] = React.useState(1);
   const [checkedOptions, setCheckedOptions] = React.useState(["uppercase"]);
@@ -67,9 +68,15 @@ function App() {
 
   return (
     <div className="App">
-      <Title>Password Generator</Title>
+      <Title>
+        {lang === "pt-BR" ? "Gerador de Senhas" : "Password Generator"}
+      </Title>
       {checkedOptions.length === 0 && (
-        <EmptyMsg>Select at least one option</EmptyMsg>
+        <EmptyMsg>
+          {lang === "pt-BR"
+            ? "Marque pelo menos uma opção"
+            : "Select at least one option"}
+        </EmptyMsg>
       )}
       <Display>
         <ResultText>{result}</ResultText>
@@ -82,7 +89,9 @@ function App() {
       </Display>
       <Body>
         <Header>
-          <HeaderTitle>Character Length</HeaderTitle>
+          <HeaderTitle>
+            {lang === "pt-BR" ? "Quantidade de caracteres" : "Character Length"}
+          </HeaderTitle>
           <HeaderValue>{value}</HeaderValue>
         </Header>
         <Slider
@@ -98,23 +107,27 @@ function App() {
               onChange={handleChange}
               checked={handleChecked("uppercase")}
             />
-            Include Uppercase Letters
+            {lang === "pt-BR"
+              ? "Incluir letras maiúsculas"
+              : "Include Uppercase Letters"}
           </Label>
           <Label>
             <Input type="checkbox" value="lowercase" onChange={handleChange} />
-            Include Lowercase Letters
+            {lang === "pt-BR"
+              ? "Incluir letras minúsculas"
+              : "Include Lowercase Letters"}
           </Label>
           <Label>
             <Input type="checkbox" value="numbers" onChange={handleChange} />
-            Include Numbers
+            {lang === "pt-BR" ? "Incluir números" : "Include Numbers"}
           </Label>
           <Label>
             <Input type="checkbox" value="symbols" onChange={handleChange} />
-            Include Symbols
+            {lang === "pt-BR" ? "Incluir símbolos" : "Include Symbols"}
           </Label>
         </OptionsContainer>
         <StrContainer>
-          <StrText>STRENGTH</StrText>
+          <StrText>{lang === "pt-BR" ? "FORÇA" : "STRENGTH"}</StrText>
           <LevelContainer>
             {value >= 4 && checkedOptions.length >= 1 && (
               <StrLevel backgroundColor="#f7cd69" />
@@ -134,7 +147,8 @@ function App() {
           </LevelContainer>
         </StrContainer>
         <Button onClick={handleClick}>
-          Generate <BsArrowRightShort size={20} />
+          {lang === "pt-BR" ? "Gerar" : "Generate"}{" "}
+          <BsArrowRightShort size={20} />
         </Button>
       </Body>
     </div>
