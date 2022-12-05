@@ -103,11 +103,13 @@ function App() {
       <Display>
         <ResultText>{result}</ResultText>
         <CopyToClipboard text={result}>
-          <CopyBox
-            text={() => (lang === "pt-BR" ? "'Copiar'" : "'Copy'")}
-            aria-label={lang === "pt-BR" ? "Copiar" : "Copy"}
-          >
-            <FaRegCopy size={25} color="#A4FFAF" className="copy" />
+          <CopyBox text={() => (lang === "pt-BR" ? "'Copiar'" : "'Copy'")}>
+            <FaRegCopy
+              size={25}
+              color="#A4FFAF"
+              className="copy"
+              aria-label={lang === "pt-BR" ? "Copiar" : "Copy"}
+            />
           </CopyBox>
         </CopyToClipboard>
       </Display>
