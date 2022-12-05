@@ -63,6 +63,7 @@ const CopyBox = styled.div`
     width: 55px;
     height: calc(55px / 2);
     background-color: #a4ffaf;
+    color: #24232b;
   }
   &:hover:after {
     display: flex;
@@ -166,6 +167,7 @@ const Button = styled.button`
   font-size: 1.2rem;
   text-transform: uppercase;
   font-weight: bold;
+  color: #24232b;
   &:hover,
   :focus {
     background: none;
