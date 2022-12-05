@@ -36,6 +36,10 @@ function App() {
     symbols: "!@#$%&'()*+,^-./:;<=>?[]_`{~}|",
   };
 
+  /* SET HTML LANGUAGE */
+  document.documentElement.lang = lang;
+  /* ----------------- */
+
   const handleChange = ({ target }) => {
     const { value, checked } = target;
     if (checked) {
