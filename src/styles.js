@@ -25,6 +25,7 @@ const Display = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0 2rem;
+  position: relative;
 `;
 
 const ResultText = styled.span`
@@ -42,6 +43,29 @@ const ResultText = styled.span`
     display: none;
   }
   scrollbar-width: none;
+`;
+
+const CopyBox = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  padding: 1rem;
+  font-size: 0.8rem;
+  &:after {
+    content: ${(props) => props.text};
+    display: none;
+    position: absolute;
+    right: -1rem;
+    width: 55px;
+    height: calc(55px / 2);
+    background-color: #a4ffaf;
+  }
+  &:hover:after {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 const Body = styled.div`
@@ -131,11 +155,8 @@ const Button = styled.button`
   font-size: 1.2rem;
   text-transform: uppercase;
   font-weight: bold;
-  &:focus {
-    background: none;
-    color: #a4ffaf;
-  }
-  &:hover {
+  &:hover,
+  :focus {
     background: none;
     color: #a4ffaf;
   }
@@ -209,6 +230,7 @@ export {
   EmptyMsg,
   Display,
   ResultText,
+  CopyBox,
   Body,
   Header,
   HeaderTitle,

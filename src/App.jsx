@@ -5,6 +5,7 @@ import {
   EmptyMsg,
   Display,
   ResultText,
+  CopyBox,
   Body,
   Header,
   HeaderTitle,
@@ -21,6 +22,7 @@ import {
 } from "./styles.js";
 import { FaRegCopy } from "react-icons/fa";
 import { BsArrowRightShort } from "react-icons/bs";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 function App() {
   const lang = navigator.language || navigator.userLanguage;
@@ -80,12 +82,11 @@ function App() {
       )}
       <Display>
         <ResultText>{result}</ResultText>
-        <FaRegCopy
-          size={20}
-          color="#A4FFAF"
-          onClick={() => navigator.clipboard.writeText(result)}
-          style={{ cursor: "pointer" }}
-        />
+        <CopyToClipboard text={result}>
+          <CopyBox text={() => (lang === "pt-BR" ? "'Copiar'" : "'Copy'")}>
+            <FaRegCopy size={25} color="#A4FFAF" className="copy" />
+          </CopyBox>
+        </CopyToClipboard>
       </Display>
       <Body>
         <Header>
