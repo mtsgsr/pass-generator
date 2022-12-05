@@ -84,7 +84,7 @@ function App() {
     if (checkedOptions.length !== 0) setResult(generateResult(value));
   };
 
-  React.useEffect(() => {
+  React.useLayoutEffect(() => {
     handleLang();
   }, []);
 
