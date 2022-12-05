@@ -31,7 +31,7 @@ const Display = styled.div`
   }
 `;
 
-const ResultText = styled.span`
+const ResultText = styled.p`
   width: 90%;
   overflow-x: scroll;
   overflow-y: hidden;
@@ -89,7 +89,7 @@ const Header = styled.div`
   align-items: center;
 `;
 
-const HeaderTitle = styled.span`
+const HeaderTitle = styled.h2`
   color: #817e91;
   font-size: 1.2rem;
   @media (max-width: 600px) {
@@ -220,7 +220,7 @@ const Label = styled.label`
   cursor: pointer;
 `;
 
-const StrText = styled.span`
+const StrText = styled.p`
   color: #817e91;
   font-size: 0.9rem;
 `;

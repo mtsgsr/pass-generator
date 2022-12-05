@@ -36,9 +36,21 @@ function App() {
     symbols: "!@#$%&'()*+,^-./:;<=>?[]_`{~}|",
   };
 
-  /* SET HTML LANGUAGE */
-  document.documentElement.lang = lang;
-  /* ----------------- */
+  const handleLang = () => {
+    document.documentElement.lang = lang;
+    if (lang === "pt-BR") {
+      document.title = "Gerador de Senhas - PassGen";
+      document
+        .getElementsByTagName("meta")
+        .namedItem("description")
+        .setAttribute(
+          "content",
+          "PassGen é uma ferramenta que ajuda você a criar senhas seguras."
+        );
+    } else {
+      return null;
+    }
+  };
 
   const handleChange = ({ target }) => {
     const { value, checked } = target;
@@ -72,8 +84,12 @@ function App() {
     if (checkedOptions.length !== 0) setResult(generateResult(value));
   };
 
+  React.useEffect(() => {
+    handleLang();
+  }, []);
+
   return (
-    <div className="App">
+    <section className="App">
       <Title>
         {lang === "pt-BR" ? "Gerador de Senhas" : "Password Generator"}
       </Title>
@@ -87,19 +103,25 @@ function App() {
       <Display>
         <ResultText>{result}</ResultText>
         <CopyToClipboard text={result}>
-          <CopyBox text={() => (lang === "pt-BR" ? "'Copiar'" : "'Copy'")}>
+          <CopyBox
+            text={() => (lang === "pt-BR" ? "'Copiar'" : "'Copy'")}
+            aria-label={lang === "pt-BR" ? "Copiar" : "Copy"}
+          >
             <FaRegCopy size={25} color="#A4FFAF" className="copy" />
           </CopyBox>
         </CopyToClipboard>
       </Display>
       <Body>
         <Header>
-          <HeaderTitle>
+          <HeaderTitle id="headerTitle">
             {lang === "pt-BR" ? "Quantidade de caracteres" : "Character Length"}
           </HeaderTitle>
-          <HeaderValue>{value}</HeaderValue>
+          <HeaderValue aria-label={lang === "pt-BR" ? "Valor" : "Value"}>
+            {value}
+          </HeaderValue>
         </Header>
         <Slider
+          aria-labelledby="headerTitle"
           min="1"
           value={value}
           onChange={(e) => setValue(e.target.value)}
@@ -151,12 +173,15 @@ function App() {
               )}
           </LevelContainer>
         </StrContainer>
-        <Button onClick={handleClick}>
-          {lang === "pt-BR" ? "Gerar" : "Generate"}{" "}
+        <Button
+          onClick={handleClick}
+          aria-label={lang === "pt-BR" ? "Gerar" : "Generate"}
+        >
+          {lang === "pt-BR" ? "Gerar" : "Generate"}
           <BsArrowRightShort size={20} />
         </Button>
       </Body>
-    </div>
+    </section>
   );
 }
 
