@@ -26,6 +26,9 @@ const Display = styled.div`
   align-items: center;
   padding: 0 2rem;
   position: relative;
+  @media (max-width: 600px) {
+    width: 95vw;
+  }
 `;
 
 const ResultText = styled.span`
@@ -72,18 +75,26 @@ const Body = styled.div`
   background-color: #24232b;
   width: 500px;
   height: fit-content;
+  margin: 0 auto;
   margin-top: 1rem;
   padding: 2rem;
+  @media (max-width: 600px) {
+    width: 95vw;
+  }
 `;
 
 const Header = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
 `;
 
 const HeaderTitle = styled.span`
   color: #817e91;
   font-size: 1.2rem;
+  @media (max-width: 600px) {
+    font-size: 1rem;
+  }
 `;
 
 const HeaderValue = styled.span`
