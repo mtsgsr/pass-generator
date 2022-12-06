@@ -51,7 +51,10 @@ if (typeof window !== "undefined") {
 function App() {
   const [result, setResult] = React.useState("");
   const [value, setValue] = React.useState(1);
-  const [checkedOptions, setCheckedOptions] = React.useState(["uppercase"]);
+  const [checkedOptions, setCheckedOptions] = React.useState([
+    "uppercase",
+    "lowercase",
+  ]);
   const options = {
     uppercase: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
     lowercase: "abcdefghijklmnopqrstuvwxyz",
@@ -144,7 +147,12 @@ function App() {
               : "Include Uppercase Letters"}
           </Label>
           <Label>
-            <Input type="checkbox" value="lowercase" onChange={handleChange} />
+            <Input
+              type="checkbox"
+              value="lowercase"
+              onChange={handleChange}
+              checked={handleChecked("lowercase")}
+            />
             {lang === "pt-BR"
               ? "Incluir letras minúsculas"
               : "Include Lowercase Letters"}
