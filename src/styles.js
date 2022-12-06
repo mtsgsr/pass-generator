@@ -55,13 +55,27 @@ const CopyBox = styled.div`
   cursor: pointer;
   padding: 1rem;
   font-size: 0.8rem;
+  position: relative;
+  &:before {
+    content: "";
+    display: none;
+    position: absolute;
+    bottom: 2.5px;
+    width: 0px;
+    height: 0px;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid #a4ffaf;
+  }
+  &:hover:before {
+    display: block;
+  }
   &:after {
     content: ${(props) => props.text};
     display: none;
     position: absolute;
-    right: -1rem;
-    width: 55px;
-    height: calc(55px / 2);
+    bottom: -25px;
+    padding: 0.25rem 0.5rem;
     background-color: #a4ffaf;
     color: #24232b;
   }
