@@ -95,7 +95,7 @@ function App() {
   };
 
   return (
-    <section className="App">
+    <section className="fadeInLeft">
       <Title>
         {lang === "pt-BR" ? "Gerador de Senhas" : "Password Generator"}
       </Title>
