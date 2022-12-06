@@ -24,8 +24,31 @@ import { FaRegCopy } from "react-icons/fa";
 import { BsArrowRightShort } from "react-icons/bs";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
+/* DEFINE LANGUAGE ON PAGE LOAD */
+const lang = navigator.language || navigator.userLanguage;
+
+const changeLang = () => {
+  document.documentElement.lang = lang;
+  if (lang === "pt-BR") {
+    document.title = "Gerador de Senhas - PassGen";
+    document
+      .getElementsByTagName("meta")
+      .namedItem("description")
+      .setAttribute(
+        "content",
+        "PassGen é uma ferramenta que ajuda você a criar senhas seguras."
+      );
+  } else {
+    return null;
+  }
+};
+
+if (typeof window !== "undefined") {
+  changeLang();
+}
+/* ----------------------- */
+
 function App() {
-  const lang = navigator.language || navigator.userLanguage;
   const [result, setResult] = React.useState("");
   const [value, setValue] = React.useState(1);
   const [checkedOptions, setCheckedOptions] = React.useState(["uppercase"]);
@@ -34,22 +57,6 @@ function App() {
     lowercase: "abcdefghijklmnopqrstuvwxyz",
     numbers: "1234567890",
     symbols: "!@#$%&'()*+,^-./:;<=>?[]_`{~}|",
-  };
-
-  const handleLang = () => {
-    document.documentElement.lang = lang;
-    if (lang === "pt-BR") {
-      document.title = "Gerador de Senhas - PassGen";
-      document
-        .getElementsByTagName("meta")
-        .namedItem("description")
-        .setAttribute(
-          "content",
-          "PassGen é uma ferramenta que ajuda você a criar senhas seguras."
-        );
-    } else {
-      return null;
-    }
   };
 
   const handleChange = ({ target }) => {
@@ -83,10 +90,6 @@ function App() {
     event.preventDefault();
     if (checkedOptions.length !== 0) setResult(generateResult(value));
   };
-
-  React.useLayoutEffect(() => {
-    handleLang();
-  }, []);
 
   return (
     <section className="App">
