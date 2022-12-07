@@ -74,7 +74,7 @@ const CopyBox = styled.div`
     content: ${(props) => props.text};
     display: none;
     position: absolute;
-    bottom: -25px;
+    bottom: -24px;
     padding: 0.25rem 0.5rem;
     background-color: #a4ffaf;
     color: #24232b;
